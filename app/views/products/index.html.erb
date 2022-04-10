@@ -22,41 +22,22 @@
     </tfoot>
 
     <tbody>
-      <% @products.each do |product| %>
-        <tr class="<%= cycle('bg-green-50', 'bg-white') %>">
-          <td class="px-2 py-3">
+      <div class="grid grid-cols-4 gap-4">
+        <% @products.each do |product| %>
+          <div class="col-md-4">
             <%= image_tag(product.image_url, class: 'w-40') %>
-          </td>
-        
-          <td>
             <h1 class="text-xl font-bold mb-3"><%= product.title %></h1> 
-            <p><%= truncate(strip_tags(product.description), length: 80) %></p> 
-          </td>
-
-          <td class="px-3"> 
-            <ul>
-              <li>
-                <%= link_to 'Show',
-                            product,
-                            class: 'hover:underline' %>
-              </li>
-              <li>
-                <%= link_to 'Edit', 
-                            edit_product_path(product),
-                            class: 'hover:underline' %>
-              </li>
-
-              <li>
-                <%= link_to 'Destroy',
-                            product,
-                            class: 'hover:underline', 
-                            data: { turbo_method: :delete,
-                                    turbo_confirm: "Are you sure?" } %>
-              </li>
-            </ul>
-          </td>
-        </tr>
-      <% end %>
+            <p><%= truncate(strip_tags(product.description), length: 40) %></p>
+            <p>
+              <%= link_to 'Show', product, class: 'hover:underline' %>
+              <%= link_to 'Edit', edit_product_path(product), class: 'hover:underline' %>
+              <%= link_to 'Delete', product, class: 'hover:underline', 
+                                              data: { turbo_method: :delete,
+                                              turbo_confirm: "Are you sure?" } %>
+            </p>     
+          </div>
+        <% end %>
+      </div>
     </tbody>
   </table>
 </div>

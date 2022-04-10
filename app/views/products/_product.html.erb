@@ -1,7 +1,10 @@
 <div id="<%= dom_id product %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= product.title %>
+    <h1><%= product.title %></h1>
+  </p>
+
+  <p class="my-5">
+    <h6><%= pluralize(product.views, "view") %></h6>
   </p>
 
   <p class="my-5">

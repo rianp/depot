@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+    @product.update(views: @product.views + 1)
   end
 
   # GET /products/new
