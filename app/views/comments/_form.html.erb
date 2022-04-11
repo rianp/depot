@@ -1,0 +1,6 @@
+<%= form_with(model: [product, product.comments.build]) do |f| %>
+    <div>
+        <%= f.rich_text_area :body %>
+        <%= f.submit "reply", class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+<% end %>

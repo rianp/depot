@@ -1,7 +1,6 @@
 <div id="<%= dom_id product %>">
-  <p class="my-5">
-    <h1><%= product.title %></h1>
-  </p>
+<h2><%= product.title %></h2>
+<h5>created by <%= link_to product.user.name, user_path(product.user) %></h5>
 
   <p class="my-5">
     <h6><%= pluralize(product.views, "view") %></h6>
@@ -20,6 +19,7 @@
   <% if action_name != "show" %>
     <%= link_to "Show this product", product, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this product', edit_product_path(product), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= button_to 'Destroy this product', product_path(product), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

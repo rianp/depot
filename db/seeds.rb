@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+
+
 Product.delete_all
 
 10.times do |x|
@@ -23,6 +25,7 @@ Product.delete_all
         open-source utilities and common programming patterns you can apply
         right away.
         </p>},
-    image_url: 'showbizz.jpg')
+    image_url: 'showbizz.jpg',
+    user_id: User.first.id)
 end
 

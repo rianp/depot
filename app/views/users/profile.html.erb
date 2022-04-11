@@ -1,0 +1,6 @@
+<div>
+  <h1><%= @user.name %></h1>
+  <h6><%= pluralize(@user.views, "view") %></h6>
+  <p><%= @user.bio %></p>
+  <p>Current user is a [<%= current_user.role %>]</p>
+</div>

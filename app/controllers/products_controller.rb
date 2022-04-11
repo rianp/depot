@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: %i[show index]
 
   # GET /products or /products.json
   def index
@@ -9,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1 or /products/1.json
   def show
     @product.update(views: @product.views + 1)
+    @comments = @product.comments.order(created_at: :desc)
   end
 
   # GET /products/new
@@ -23,6 +25,7 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)
+    @product.user = current_user
 
     respond_to do |format|
       if @product.save
